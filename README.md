@@ -2,7 +2,43 @@
 I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för att kunna användas inom restauranger. Syftet var att mäta temperatur och luftfuktighet i restaurangmiljöer, registrera antalet besökare samt övervaka bullernivån. Bullernivån är särskilt viktig eftersom olika kommuner i Sverige har fastställt olika riktvärden för bullernivåer beroende på källan till ljudet. Detta innebär att restauranger och krogar behöver anpassa sig efter dessa riktlinjer. Resten av detta dokument kommer att gå igenom vilka nätverk, sensorer och platformar som har använts. 
 
 # Innehållsförteckning
-[TOC]
+* [Kallskänken pilote case](#kallskänken-pilote-case)
+* [Innehållsförteckning](#innehållsförteckning)
+* [LoRaWAN Nätverk](#lorawan-nätverk)
+   * [Helium](#helium)
+      * [Logga in](#logga-in)
+      * [Lägg till enhet](#lägg-till-enhet)
+      * [Skicka downlink](#skicka-downlink)
+      * [Länka enhet till datacake](#länka-enhet-till-datacake)
+      * [Byt namn på Helium enhet](#byt-namn-på-helium-enhet)
+   * [Actility](#actility)
+      * [Kalmar Energi Portalen](#kalmar-energi-portalen)
+      * [API](#api)
+      * [Device API](#device-api)
+      * [Device Data API](#device-data-api)
+      * [Device Data Latest API](#device-data-latest-api)
+* [Sensorer](#sensorer)
+   * [Sensative Strips](#sensative-strips)
+      * [Medföljande Strips](#medföljande-strips)
+      * [Konfigurera Strips](#konfigurera-strips)
+            * [Använd Strips configuration aplication](#använd-strips-configuration-aplication)
+   * [Ljudsensor](#ljudsensor)
+      * [Installation](#installation)
+      * [Konfiguration av sensorn](#konfiguration-av-sensorn)
+         * [NFC-konfiguration](#nfc-konfiguration)
+         * [Konfiguration via downlinks](#konfiguration-via-downlinks)
+      * [Parametrar för applikationen](#parametrar-för-applikationen)
+   * [Besöksräknare](#besöksräknare)
+* [Visualisering av data](#visualisering-av-data)
+   * [Inloggning](#inloggning)
+   * [Lägg till enhet Datacake](#lägg-till-enhet-datacake)
+   * [Byt namn på Datacake enhet](#byt-namn-på-datacake-enhet)
+   * [Dashboards](#dashboards)
+      * [Skapa Dashbords](#skapa-dashbords)
+* [Länka till google kalkylark](#länka-till-google-kalkylark)
+   * [How it works](#how-it-works)
+   * [Example of datas](#example-of-datas)
+
 # LoRaWAN Nätverk
 
 I detta projekt testades nätverken Helium och Actility (via Kalmar Energi). till en början kopplades några sensorer till Helium och några till Actility. Från Helium skickas datan vidare till google sheets och Datacake. På Datacake skapades 2 dashboards där datan från sensorerna visualiserades. Eftersom det visade sig att täckningen för Helium inte var tillräcklig på reataurangerna lades alla sensorer över till Kalmar energis portal. Från Kalmar energis portal är datan tillgäng via ett API, det går även att skapa dashboards på portalen. 
