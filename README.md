@@ -1,5 +1,5 @@
 # Kallskänken pilote case 
-I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för att kunna användas inom restauranger. Syftet var att mäta temperatur och luftfuktighet i restaurangmiljöer, registrera antalet besökare samt övervaka bullernivån. Bullernivån är särskilt viktig eftersom olika kommuner i Sverige har fastställt olika riktvärden för bullernivåer beroende på källan till ljudet. Detta innebär att restauranger och krogar behöver anpassa sig efter dessa riktlinjer. Resten av detta dokument kommer att gå igenom vilka nätverk, sensorer och platformar som har använts. 
+I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för att kunna användas inom restauranger. Syftet var att mäta temperatur och luftfuktighet i restaurangmiljöer, registrera antalet besökare samt övervaka bullernivån. Bullernivån är särskilt viktig eftersom olika kommuner i Sverige har fastställt olika riktvärden för bullernivåer beroende på källan till ljudet. Detta innebär att restauranger och krogar behöver anpassa sig efter dessa riktlinjer. Resten av detta dokument kommer att gå igenom vilka nätverk, sensorer och plattformar som har använts.
 
 # Innehållsförteckning
 * [Kallskänken pilote case](#kallskänken-pilote-case)
@@ -41,7 +41,7 @@ I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för at
 
 # LoRaWAN Nätverk
 
-I detta projekt testades nätverken Helium och Actility (via Kalmar Energi). till en början kopplades några sensorer till Helium och några till Actility. Från Helium skickas datan vidare till google sheets och Datacake. På Datacake skapades 2 dashboards där datan från sensorerna visualiserades. Eftersom det visade sig att täckningen för Helium inte var tillräcklig på reataurangerna lades alla sensorer över till Kalmar energis portal. Från Kalmar energis portal är datan tillgäng via ett API, det går även att skapa dashboards på portalen. 
+I detta projekt testades nätverken Helium och Actility (via Kalmar Energi). till en början kopplades några sensorer till Helium och några till Actility. Från Helium skickas data vidare till google-sheets och Datacake. På Datacake skapades 2 dashboards där data från sensorerna visualiserades. Eftersom det visade sig att täckningen för Helium inte var tillräcklig på restaurangerna lades alla sensorer över till Kalmar energis portal. Från Kalmar energis portal är data tillgängligt via ett API, det går även att skapa dashboards på portalen. 
 
 ![](https://hackmd.io/_uploads/BygivmCT2.png)
 
@@ -58,9 +58,10 @@ Eftersom täckningen är beroende av privatpersoner som håller igång Heliums H
 
 ### Logga in
 
-1. Se till att du är inloggad på [gmail](https://mail.google.com/) med mailadressen som är listad i [Autentiseringsuppgifter](#Autentiseringsuppgifter)
+1. Se till att du är inloggad på [gmail](https://mail.google.com/) med mejladressen som är listad i [Autentiseringsuppgifter](#Autentiseringsuppgifter)
 2. Gå till: https://console-vip.helium.com/.
-3. Klicka på 'continue with google' och använd mailadressen som är listad i [Autentiseringsuppgifter](#Autentiseringsuppgifter)
+3. Klicka på 'continue with google' och använd mejladressen som är listad i [Autentiseringsuppgifter](#Autentiseringsuppgifter)
+
 
 ### Lägg till enhet
 
@@ -218,7 +219,7 @@ När remsorna är nya är de inställda till att endast fungera som dörr-sensor
 1. "Device model" är "Strips multi sensor +comfort".
 2. Välj den profil som passar det remsan ska användas till.
 3. Generatorn kommer att beskriva den valda profilen, fortsätt genom att klicka på "proceed". I dessa steg är det möjligt att ändra profilen, men detta kan påverka enhetens batteritid.
-4. I det sista steget visas en "payload" överst på sidan. "Payloaden" är medelandet som ska skickas till remsan, den är i hexadecimal form, under  finns en knapp som gör den bas 64-kodad. Vilket format det ska vara beror på vilket nätverk som används för enheten. ![](https://hackmd.io/_uploads/SJVgNUUs3.png)
+4. I det sista steget visas en "payload" överst på sidan. "Payloaden" är meddelandet som ska skickas till remsan, den är i hexadecimal form, under  finns en knapp som gör den bas 64-kodad. Vilket format det ska vara beror på vilket nätverk som används för enheten. ![](https://hackmd.io/_uploads/SJVgNUUs3.png)
 6. Skicka meddelandet till din enhet: [Skicka downlink(Helium)](#Skicka-downlink).
 
 ## Ljudsensor
@@ -248,12 +249,12 @@ Alla parametrar för applikationen "Sensorinställningar" finns i inställningsd
 
 ## Besöksräknare
 
-Besöksräknaren kan detektera när någon paserar emellan dess två enheter. Den kan också avgöra åt vilket håll personen rörde sig. Med hjälp av dessa egenskaper kan den ge en ungefärlig bild av hur många människor som befinner sig i en lokal.
+Besöksräknaren kan detektera när någon passerar emellan dess två enheter. Den kan också avgöra åt vilket håll personen rörde sig. Med hjälp av dessa egenskaper kan den ge en ungefärlig bild av hur många människor som befinner sig i en lokal.
 
 ![](https://hackmd.io/_uploads/HJOHlVRTh.jpg)
 
 # Visualisering av data
-Datacake användes för att visualisera data från sensorerna i heliumnätverket. För att se den visualiserade datan klicka på en enhet eller på en "Dashboard". ![](https://hackmd.io/_uploads/H159ar53n.png) 
+Datacake användes för att visualisera data från sensorerna i heliumnätverket. För att se den visualiserade data klicka på en enhet eller på en "Dashboard". ![](https://hackmd.io/_uploads/H159ar53n.png) 
 
 ![](https://hackmd.io/_uploads/r1hmObR6n.png)
 
@@ -298,7 +299,7 @@ Tips: Ett bra sätt att lära sig vad som kan göras är att redigera befintliga
 # Länka till google kalkylark
 Om du vill använda dina data kan du ha dem i Google Sheets. Du kan sedan enkelt konsultera dem och göra vad du vill med dem.
 
-## How it works
+## Hur det funkar
 Vi samlar in data från portalen och bearbetar den sedan med en avkodare för att skicka den.
 
 Avkodaren är en kod som tar en del av data som kallas "Payload" och bearbetar den för att extrahera de önskade värdena.
@@ -308,7 +309,7 @@ Datan skickas till dokumentet via ett frågeformulär. I det här fallet använd
 ![](https://hackmd.io/_uploads/rk9CEX0a2.png)
 Sedan överför google forms uppgifterna till google sheets.
 
-## Example of datas
+## Exempel på data
 Det här är vad du kommer att se i Google Sheets: Datum, temperatur, ljus och luftfuktighet.
 Ibland saknas vissa data eftersom de inte har ändrats sedan den senaste mätningen...
 
