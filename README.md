@@ -178,22 +178,29 @@ Nodens ID för exemplet ovan är: `469f0f0f-12fc-440a-81db-56295513151w`
 
 ### Device API
 - För att anropa alla noder och se deras: Id, ChannelId, ModelId, etc... Gör en GET request på följande endpoint:
-GET https://api.kalmarenergi.se/device/v1/nodes 
+
+   GET https://api.kalmarenergi.se/device/v1/nodes 
  
 - För att anropa en specifik nod och se dess: Id, ChannelId, ModelId, etc... Gör en GET request på följande endpoint:
-GET https://api.kalmarenergi.se/device/v1/nodes/{NodeId}
+
+   GET https://api.kalmarenergi.se/device/v1/nodes/{NodeId}
  
  
 ### Device Data API
--	Hämta data från en nod:
-GET https://api.kalmarenergi.se/device-data/v1/message-values?nodeId={NodeId}6&pageIndex=1&pageSize=-1&sortBy=Message.CreatedAt&sortDescending=false&channelIds={ChannelId}&channelIds={ChannelId}&channelIds={ChannelId} 
+
+**Hämta data från en nod:**
+
+GET https://api.kalmarenergi.se/device-data/v1/message-values?nodeId={NodeId}6&pageIndex=1&pageSize=-1&sortBy=Message.CreatedAt&sortDescending=false&channelIds={ChannelId}&channelIds={ChannelId}&channelIds={ChannelId}
+
 GET https://api.kalmarenergi.se/device-data/v1/message-values?NodeId={NodeId}
+
 GET https://api.kalmarenergi.se/device-data/v1/message-values?ChannelIds={ChannelId}&NodeId={NodeId} 
  
  
  
 ### Device Data Latest API
--	Hämta det senaste meddelandet (data) som anlänt från en nod:
+Hämta det senaste meddelandet (data) som anlänt från en nod:
+
 GET https://api.kalmarenergi.se/device-data-latest/v1/message-values?nodes={NodeId}&pageIndex=1&pageSize=100
 
 
