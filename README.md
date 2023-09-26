@@ -30,7 +30,7 @@ I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för at
          * [Konfiguration via downlinks](#konfiguration-via-downlinks)
       * [Parametrar för applikationen](#parametrar-för-applikationen)
    * [Besöksräknare](#besöksräknare)
-      * [NFC-konfiguration](#konfiguration)
+      * [NFC-konfiguration](#nfc-konfiguration)
       * [Konfiguration via downlinks](#konfiguration-via-downlinks)
 * [Visualisering av data](#visualisering-av-data)
    * [Inloggning](#inloggning)
@@ -290,7 +290,7 @@ Du kan se alla inställningar i den ***avancerade guiden*** ivan, men här är e
 
 Det är rekommenderat att baka in flera instruktioner i en enda Downlink. I det här fallet kan du lägga till intruktionen save, vilket skulle ge följande Downlink:
 
-**Spara instrukton**
+**intruktionen för att spara**
 >F1 01 04 50 1E 96 ==03 C8 04==
 
 För att se alla olika typer av nyttolaster kan du kolla den ***avancerade guiden*** ovan.
