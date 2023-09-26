@@ -20,8 +20,9 @@ I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för at
 * [Sensorer](#sensorer)
    * [Sensative Strips](#sensative-strips)
       * [Medföljande Strips](#medföljande-strips)
+      * [Ansluta sensorn till LoRaWAN-nätverket](#ansluta-sensorn-till-lorawan-nätverket)
       * [Konfigurera Strips](#konfigurera-strips)
-            * [Använd Strips configuration aplication](#använd-strips-configuration-aplication)
+         * [Använd Strips configuration aplication](#använd-strips-configuration-aplication)
    * [Ljudsensor](#ljudsensor)
       * [Installation](#installation)
       * [Konfiguration av sensorn](#konfiguration-av-sensorn)
@@ -29,6 +30,8 @@ I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för at
          * [Konfiguration via downlinks](#konfiguration-via-downlinks)
       * [Parametrar för applikationen](#parametrar-för-applikationen)
    * [Besöksräknare](#besöksräknare)
+      * [NFC-konfiguration](#konfiguration)
+      * [Konfiguration via downlinks](#konfiguration-via-downlinks)
 * [Visualisering av data](#visualisering-av-data)
    * [Inloggning](#inloggning)
    * [Lägg till enhet Datacake](#lägg-till-enhet-datacake)
@@ -212,6 +215,14 @@ Strips från Sensative är diskreta sensorer som finns tillgängliga för ett an
 ### Medföljande Strips
 Tio remsor ingår för tillfället i projektet, Alla är just nu inlagda på på [Actility/Stadshubben](#Actility). De är märkta "SH1-10". De har också konfigurerats för att skicka relevanta data. De bör vara redo att installeras där de behövs.
 
+### Ansluta sensorn till LoRaWAN-nätverket 
+För att ansluta en sensor till LoRaWAN-nätverket behöver magneten avlägsnas efter att nycklarna har matats in i nätverksservern. Då gör sensorn en join-sekvens och ansluter till nätverket. Om man har avlägsnat magneten innan nycklarna har matats in i nätverksservern kan en manuell join-sekvens göras genom att hålla en magnet vid den runda sidan av sensorn och flytta bort den tre gånger.
+
+Följande film som visar hur man tvingar sensorn att göra en join-sekvens: https://www.youtube.com/watch?v=BBRCxrhlpsc&ab_channel=Sensative
+
+Föjande film som visar hur man återställer sensorn till fabriksinställningar: https://www.youtube.com/watch?v=qkWr9diDSNk&ab_channel=Sensative
+
+
 ### Konfigurera Strips
 När remsorna är nya är de inställda till att endast fungera som dörr-sensorer. De behöver konfigureras för att läsa av temperatur, luftfuktighet och omgivande ljus. Sensorerna konfigureras genom att en downlink skickas till dem. Sensatives webbplats har en ['Strips configuration aplication'] (https://strips-lora-config-app.service.sensative.net/profiles) som tillhandahåller rätt meddelande att skicka med downlinkarna för att konfigurera remsan.
 ##### Använd Strips configuration aplication
@@ -252,6 +263,40 @@ Alla parametrar för applikationen "Sensorinställningar" finns i inställningsd
 Besöksräknaren kan detektera när någon passerar emellan dess två enheter. Den kan också avgöra åt vilket håll personen rörde sig. Med hjälp av dessa egenskaper kan den ge en ungefärlig bild av hur många människor som befinner sig i en lokal.
 
 ![](https://hackmd.io/_uploads/HJOHlVRTh.jpg)
+
+Manual: [IMBUILDINGS - LoRaWAN People Counter - doc v1.1](/docs/People-counter/IMBUILDINGS%20-%20LoRaWAN%20People%20Counter%20-%20doc%20v1.1.pdf)
+
+Avancerad guide: [IMBUILDINGS_Reference_Guide_for_System_Integrators](/docs/People-counter/IMBUILDINGS_Reference_Guide_for_System_Integrators.pdf)
+
+### NFC-konfiguration 
+För att komma igång och konfigurera enheten via NFC behöver man ladda ner appen (APK) för Android från IMBuildings [Github sida](https://github.com/IMBUILDINGS/Config-App). När man väl har installerat appen kan man hålla telefonen nära sensorn för att göra NFC-avläsningen. I Appen kan man sedan ändra `AppKey` och `AppEUI` såväl som andra inställningar. 
+
+![Alt text](/docs/img/image.png)
+
+### Konfiguration via downlinks
+
+Du kan se alla inställningar i den ***avancerade guiden*** ivan, men här är en snabb sammanfattning av vad du kan göra:
+
+**Sätta till 10 minuters intervall**
+> F1 01 03 1E ==0A==
+> interval : 0A (correspond to 10 minutes)
+
+**Ändra avstånd**
+> F1 01 04 50 ==1E 96==
+> 
+> Ignored distance : 0x1E (correspond to 30 cm)
+> 
+> Detection distance : 96 (correspond to 150 cm)
+
+Det är rekommenderat att baka in flera instruktioner i en enda Downlink. I det här fallet kan du lägga till intruktionen save, vilket skulle ge följande Downlink:
+
+**Spara instrukton**
+>F1 01 04 50 1E 96 ==03 C8 04==
+
+För att se alla olika typer av nyttolaster kan du kolla den ***avancerade guiden*** ovan.
+
+Mer om Downlinks [här](/docs/IMBUILDINGS_Reference_Guide_for_System_Integrators.pdf)
+
 
 # Visualisering av data
 Datacake användes för att visualisera data från sensorerna i heliumnätverket. För att se den visualiserade data klicka på en enhet eller på en "Dashboard". ![](https://hackmd.io/_uploads/H159ar53n.png) 
