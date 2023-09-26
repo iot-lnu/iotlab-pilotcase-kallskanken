@@ -8,7 +8,7 @@ I detta pilotprojekt har olika LoRaWAN-nätverk och sensorer undersökts för at
    * [Helium](#helium)
       * [Logga in](#logga-in)
       * [Lägg till enhet](#lägg-till-enhet)
-      * [Skicka downlink](#skicka-downlink)
+      * [Skicka Downlink](#skicka-downlink)
       * [Länka enhet till datacake](#länka-enhet-till-datacake)
       * [Byt namn på Helium enhet](#byt-namn-på-helium-enhet)
    * [Actility](#actility)
@@ -114,7 +114,18 @@ Det är möjligt att filtrera bort sensorer som ligger utanför ett inställt in
 ![](https://hackmd.io/_uploads/Bk4L6SM0n.png)
 
 För att göra detta, klicka på `Filter channels` i det övre högra hörnet av kartan och välj kanalen/värdet du vill filtrera baserat på.
+
 ![](https://hackmd.io/_uploads/rytLDUzAh.png)
+
+### Downlink
+
+För att skicka en Downlink behöver man klicka på de tre prickarna längst till höger och sedan på `Messages`. 
+
+![Alt text](/docs/img/image-1.png)
+
+Sedan behöver man klicka på de tre prickarna längst till höger och sedan på `Send Downlink`. Strängen som man skickar med brukar oftast vara i hexadecimal form och skickar över `port 11`. 
+
+![Alt text](/docs/img/image.png)
 
 ### API
 Det är möjligt att använda dina inloggningsuppgifter (som du använder för att logga in på Stadshubben) för att logga in på vår API-portal - eventuellt behöver du slutföra registreringen för att få tillgång till API-portalen:
@@ -238,7 +249,7 @@ När remsorna är nya är de inställda till att endast fungera som dörr-sensor
 2. Välj den profil som passar det remsan ska användas till.
 3. Generatorn kommer att beskriva den valda profilen, fortsätt genom att klicka på "proceed". I dessa steg är det möjligt att ändra profilen, men detta kan påverka enhetens batteritid.
 4. I det sista steget visas en "payload" överst på sidan. "Payloaden" är meddelandet som ska skickas till remsan, den är i hexadecimal form, under  finns en knapp som gör den bas 64-kodad. Vilket format det ska vara beror på vilket nätverk som används för enheten. ![](https://hackmd.io/_uploads/SJVgNUUs3.png)
-6. Skicka meddelandet till din enhet: [Skicka downlink(Helium)](#Skicka-downlink).
+6. Skicka meddelandet till din enhet: [Skicka downlink(Helium)](#skicka-downlink).
 
 ## Ljudsensor
 ERS sound mäter ljud och flera andra saker så som temperatur, luftfuktighet och ljusintensitet.
@@ -278,7 +289,7 @@ Avancerad guide: [IMBUILDINGS_Reference_Guide_for_System_Integrators](/docs/Peop
 ### NFC-konfiguration 
 För att komma igång och konfigurera enheten via NFC behöver man ladda ner appen (APK) för Android från IMBuildings [Github sida](https://github.com/IMBUILDINGS/Config-App). När man väl har installerat appen kan man hålla telefonen nära sensorn för att göra NFC-avläsningen. I Appen kan man sedan ändra `AppKey` och `AppEUI` såväl som andra inställningar. 
 
-![Alt text](/docs/img/image.png)
+![Alt text](/docs/img/image0.png)
 
 ### Konfiguration via downlinks
 
